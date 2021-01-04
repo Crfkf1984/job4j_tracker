@@ -14,6 +14,7 @@ public class Product {
     }
 
     public int discount() {
+
         return 0;
     }
 
