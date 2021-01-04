@@ -4,6 +4,11 @@ public class Dentist extends Doctor {
     private String burmaschine;
     private String skalpel;
     private String pinzet;
+    private int timeprozedur;
 
-    public Profession chistkazuba() {};
+    public Dentist(String burmaschine, String skalpel, String pinzet, int timeprozedur) {
+        super(burmaschine, skalpel, pinzet, timeprozedur);
+    }
+
+// public Profession chistkazuba() {};
 }

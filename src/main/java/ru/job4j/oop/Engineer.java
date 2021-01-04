@@ -1,9 +1,16 @@
 package ru.job4j.oop;
+import java.time.LocalDate;
 
 public class Engineer extends Profession {
     private String lineika;
     private String chertesch;
-    private int timeizgotovlenija;
+    private String educationstroitelja;
+    private LocalDate daystroitelstwa;
 
-    public Programmer resjob() {};
+    public Engineer(String name, String surname, String education, String lineika) {
+        super(name, surname, education);
+    }
+
+
+ // public Programmer resjob() {};
 }
