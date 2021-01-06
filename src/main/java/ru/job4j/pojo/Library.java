@@ -21,7 +21,7 @@ public class Library {
 
         for (int index = 0; index < allbooks.length; index++) {
             Book onlycleanbook = allbooks[index];
-            if (onlycleanbook.getName() == "Prince") {
+            if (onlycleanbook.getName().equals("Prince")) {
                 System.out.println(" сравнивываем ссылочные типы");
                 System.out.println(onlycleanbook.getName() + " - " + onlycleanbook.getStranizi());
             }
