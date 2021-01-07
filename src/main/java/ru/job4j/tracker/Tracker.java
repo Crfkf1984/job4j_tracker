@@ -24,7 +24,6 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         Item[] resmassiv = new Item[size];
-        size = items.length;
         int zicle = 0;
         for (int index = 0; index < size; index++) {
             Item res = items[index];
@@ -37,9 +36,9 @@ public class Tracker {
         return resmassiv;
     }
 
-    public boolean replace(int id, Item item) {
-
-    }
+//    public boolean replace(int id, Item item) {
+//
+//    }
 
     private int indexOf(int id) {
         int rsl = -1;
