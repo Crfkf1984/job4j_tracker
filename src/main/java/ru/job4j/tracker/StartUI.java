@@ -7,7 +7,7 @@ public class StartUI {
         Item formatdate = new Item(1, "Petr");
         Item zajavka = new Item();
         Tracker find = new Tracker();
-        find.add(zajavka);
+        find.add(formatdate);
         System.out.println(find.findById(1));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
         LocalDateTime poluchaemznachenie = formatdate.getCreated();
