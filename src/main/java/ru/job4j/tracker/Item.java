@@ -10,6 +10,10 @@ public class Item {
 
     }
 
+    public Item(String name) {
+
+    }
+
     public Item(int id) {
         this.id = id;
     }
