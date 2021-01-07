@@ -35,10 +35,12 @@ public class Tracker {
         resmassiv = Arrays.copyOf(resmassiv, zicle);
         return resmassiv;
     }
-
-//    public boolean replace(int id, Item item) {
-//
-//    }
+    public boolean replace(int id, Item item) {
+     int index = indexOf(id);
+        items[index] = item;
+     item.getId();
+     return index == indexOf(id) ? true : false;
+    }
 
     private int indexOf(int id) {
         int rsl = -1;
