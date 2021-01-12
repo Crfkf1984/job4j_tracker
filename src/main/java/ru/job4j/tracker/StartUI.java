@@ -33,9 +33,25 @@ public class StartUI {
                     String name = scanner.nextLine();
                     Item item = new Item(name);
                     tracker.add(item);
-                    /*            } else if (...) { */
-                    /*             Добавить остальные действия системы по меню. */
-                } else if (select == 6) {
+                } else if (select == 1) {
+                    System.out.println("=== Find all Name? ===");
+                    Item item = new Item();
+                    Item[] items = tracker.findAll(item);
+                    System.out.println(items);
+                } else if (select == 2) {
+                    int id = ;
+                    Item item = tracker.findById(id);
+                  tracker.replace(id, item);
+                } else if (select == 3) {
+
+                } else if (select == 4) {
+                    System.out.println("=== Find by id Name? ===");
+                    System.out.println("Enter id");
+                    int id = Integer.valueOf(scanner.nextLine());
+                    tracker.findById(id);
+                } else if (select == 5) {
+
+                }else if (select == 6) {
                     run = false;
                 }
             }
