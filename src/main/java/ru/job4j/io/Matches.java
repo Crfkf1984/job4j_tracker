@@ -29,8 +29,7 @@ public class Matches {
                 when = when == true ? false : true;
             }
         }
-
-         String res = when == true  ? name2 : name1;
+        String res = when == true  ? name2 : name1;
         System.out.println("Победа присуждается : " + res);
     }
 }
