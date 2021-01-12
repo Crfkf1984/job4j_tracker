@@ -6,17 +6,13 @@ public class Matches {
         boolean when = true;
         String name1 = "Андрей";
         String name2 = "Сергей";
-;        int rsl = 11;
-        int igrock1 = 0;
-        int igrock2 = 0;
+       int rsl = 11;
         while (rsl > 0) {
             if (when) {
                 System.out.println("Берите спички, " + name1);
-                igrock1++;
                 when = false;
             } else {
                 System.out.println("Берите спички, " + name2);
-                igrock2++;
                 when = true;
             }
             Scanner res = new Scanner(System.in);
