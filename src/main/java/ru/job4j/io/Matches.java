@@ -21,7 +21,7 @@ public class Matches {
             }
             Scanner res = new Scanner(System.in);
             int select = Integer.valueOf(res.nextLine());
-            if (select <= 3) {
+            if (select <= 3 && select > 0) {
                 rsl = rsl - select;
                 System.out.println("Осталось " + rsl);
             } else {
@@ -30,7 +30,7 @@ public class Matches {
             }
         }
 
-        String res = igrock1 > igrock2 ? name1 : name2;
+         String res = when == true  ? name2 : name1;
         System.out.println("Победа присуждается : " + res);
     }
 }
