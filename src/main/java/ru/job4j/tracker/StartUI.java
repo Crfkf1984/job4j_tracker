@@ -35,22 +35,51 @@ public class StartUI {
                     tracker.add(item);
                 } else if (select == 1) {
                     System.out.println("=== Find all Name? ===");
-                    Item item = new Item();
+                    System.out.println("=== Enter to Name ===");
+                    String name = scanner.nextLine();
+                    Item item = new Item(name);
                     Item[] items = tracker.findAll(item);
                     System.out.println(items);
                 } else if (select == 2) {
-                    int id = ;
-                    Item item = tracker.findById(id);
-                  tracker.replace(id, item);
+                    System.out.println("Edit item ?");
+                    System.out.println("Enter to id edit item");
+                    int id = Integer.valueOf(scanner.nextLine());
+                    System.out.println("Enter to name edit item");
+                    String name = scanner.nextLine();
+                    Item item = new Item(id, name);
+                    if (tracker.replace(id, item)) {
+                        System.out.println(item);
+                    } else {
+                        System.out.println("Заявка с таким id не найдена");
+                    }
                 } else if (select == 3) {
-
+                    System.out.println("=== Delete item: ? ===");
+                    System.out.println("=== Enter to item ===");
+                    int id = Integer.valueOf(scanner.nextLine());
+                    if (tracker.delete(id)) {
+                        System.out.println("Заявка найдена и удалена !");
+                    } else {
+                        System.out.println("Такой заявки нет!");
+                    }
                 } else if (select == 4) {
-                    System.out.println("=== Find by id Name? ===");
+                    System.out.println("=== Find item by Id? ===");
                     System.out.println("Enter id");
                     int id = Integer.valueOf(scanner.nextLine());
-                    tracker.findById(id);
+                    Item item = tracker.findById(id);
+                    if (item != null) {
+                        System.out.println(item);
+                    }else {
+                        System.out.println("Заявка с таким id не найдена");
+                    }
                 } else if (select == 5) {
-
+                    System.out.println("Find items by name ?");
+                    String name = scanner.nextLine();
+                   Item[] items = tracker.findByName(name);
+                   if (items.length != 0) {
+                       System.out.println(items);
+                   } else {
+                       System.out.println("Заявки с таким именем не найдены");
+                   }
                 }else if (select == 6) {
                     run = false;
                 }
@@ -65,8 +94,8 @@ public class StartUI {
             "3. Delete item" + System.lineSeparator() +
             "4. Find item by Id" + System.lineSeparator() +
             "5. Find items by name" + System.lineSeparator()
-            + "6. Exit Program" + System.lineSeparator() +
-            "Select:" + System.lineSeparator());
+            + "6. Exit Program" + System.lineSeparator());
+            //"Select:" + System.lineSeparator());
             /* добавить остальные пункты меню. */
         }
 }
