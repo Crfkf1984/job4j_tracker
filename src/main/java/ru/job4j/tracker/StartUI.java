@@ -39,7 +39,10 @@ public class StartUI {
                     String name = scanner.nextLine();
                     Item item = new Item(name);
                     Item[] items = tracker.findAll(item);
-                    System.out.println(items);
+                    for (Item i :
+                            items) {
+                        System.out.println(i);
+                    }
                 } else if (select == 2) {
                     System.out.println("Edit item ?");
                     System.out.println("Enter to id edit item");
@@ -76,7 +79,11 @@ public class StartUI {
                     String name = scanner.nextLine();
                    Item[] items = tracker.findByName(name);
                    if (items.length != 0) {
-                       System.out.println(items);
+                       for (Item item :
+                               items) {
+                           System.out.println(item);
+                       }
+
                    } else {
                        System.out.println("Заявки с таким именем не найдены");
                    }
