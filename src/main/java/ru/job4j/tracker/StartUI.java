@@ -33,9 +33,7 @@ public class StartUI {
                     tracker.add(item);
                 } else if (select == 1) {
                     System.out.println("=== Find all Name? ===");
-                    String name = input.askStr("=== Enter to Name ===");
-                    Item item = new Item(name);
-                    Item[] items = tracker.findAll(item);
+                    Item[] items = tracker.findAll();
                     for (Item i :
                             items) {
                         System.out.println(i);
