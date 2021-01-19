@@ -3,11 +3,11 @@ import java.lang.IllegalArgumentException;
 
 public class Fact {
     public static void main(String[] args) {
-
+        System.out.println(calc(-1));
     }
 
-    public int calc(int n) {
-        if (n > 0) {
+    public static int calc(int n) {
+        if (n < 0) {
             throw new IllegalArgumentException("n меньше 0 - это не допустимо!");
         }
         int rsl = 1;
