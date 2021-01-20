@@ -1,5 +1,4 @@
 package ru.job4j.ex;
-import java.lang.IllegalArgumentException;
 
 public class Fact {
     public static void main(String[] args) {
