@@ -88,7 +88,6 @@ public class StartUI {
             boolean run = true;
             while (run) {
                 this.showMenu();
-                System.out.print("Select: ");
                 int select = input.askInt("Select: ");
                 if (select == 0) {
                     StartUI.createItem(input, tracker);
