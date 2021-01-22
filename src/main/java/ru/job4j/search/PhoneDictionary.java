@@ -16,14 +16,14 @@ public class PhoneDictionary {
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
         for (int i = 0; i < this.persons.size(); i++) {
-            if (result.get(i).getName().equals(key)) {
-                return result;
-            } else if (result.get(i).getSurname().equals(key)) {
-                return result;
-            } else if (result.get(i).getAddress().equals(key)) {
-                return result;
-            } else if (result.get(i).getPhone().equals(key)) {
-                return result;
+            if (persons.get(i).getName().equals(key)) {
+                return result.;
+            } else if (persons.get(i).getSurname().equals(key)) {
+                return result.;
+            } else if (persons.get(i).getAddress().equals(key)) {
+                return result.add();
+            } else if (persons.get(i).getPhone().equals(key)) {
+                return result.add();
             }
         }
         return result;
