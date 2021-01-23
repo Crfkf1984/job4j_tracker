@@ -16,8 +16,8 @@ public class StartUI {
 
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
-        //StartUI.createItem(input, tracker);
+        UserAction[] actions = {new CreateAction(), new ReplaceAction(), new DeleteAction()};
+        new StartUI().init(input, tracker, actions);
 
     }
 
@@ -84,38 +84,28 @@ public class StartUI {
     }
 
 
-    public void init(Input input, Tracker tracker) {
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
             boolean run = true;
             while (run) {
-                this.showMenu();
+                this.showMenu(actions);
                 int select = input.askInt("Select: ");
-                if (select == 0) {
-                    StartUI.createItem(input, tracker);
-                } else if (select == 1) {
-                    StartUI.findallNameItem(input, tracker);
-                } else if (select == 2) {
-                    StartUI.replaceItem(input, tracker);
-                } else if (select == 3) {
-                   StartUI.deteleItem(input, tracker);
-                } else if (select == 4) {
-                 StartUI.finditembyIdItem(input,tracker);
-                } else if (select == 5) {
-                  StartUI.finditemsbynameItem(input, tracker);
-                }else if (select == 6) {
-                    run = false;
-                }
+                UserAction action = actions[select];
+                run = action.execute(input, tracker);
             }
             }
 
-        private void showMenu() {
-            System.out.println("Menu."+ System.lineSeparator()
-            + "0. Add new Item" + System.lineSeparator() +
-            "1. Show all items" + System.lineSeparator() +
-            "2. Edit item" + System.lineSeparator() +
-            "3. Delete item" + System.lineSeparator() +
-            "4. Find item by Id" + System.lineSeparator() +
-            "5. Find items by name" + System.lineSeparator()
-            + "6. Exit Program" + System.lineSeparator());
+        private void showMenu(UserAction[] actions) {
+            for (int index = 0; index < actions.length; index++) {
+                System.out.println(index + ". " + actions[index].name());
+            }
+//            System.out.println("Menu."+ System.lineSeparator()
+//            + "0. Add new Item" + System.lineSeparator() +
+//            "1. Show all items" + System.lineSeparator() +
+//            "2. Edit item" + System.lineSeparator() +
+//            "3. Delete item" + System.lineSeparator() +
+//            "4. Find item by Id" + System.lineSeparator() +
+//            "5. Find items by name" + System.lineSeparator()
+//            + "6. Exit Program" + System.lineSeparator());
             //"Select:" + System.lineSeparator());
             /* добавить остальные пункты меню. */
         }
