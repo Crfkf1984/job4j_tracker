@@ -10,20 +10,22 @@ public class PhoneDictionary {
 
     /**
      * Вернуть список всех пользователей, который содержат key в любых полях.
+     *
      * @param key Ключ поиска.
      * @return Список подощедщих пользователей.
      */
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        for (int i = 0; i < this.persons.size(); i++) {
-            if (persons.get(i).getName().equals(key)) {
-                return result.;
-            } else if (persons.get(i).getSurname().equals(key)) {
-                return result.;
-            } else if (persons.get(i).getAddress().equals(key)) {
-                return result.add();
-            } else if (persons.get(i).getPhone().equals(key)) {
-                return result.add();
+        for (Person p :
+                persons) {
+            if (p.getName().contains(key)) {
+                result.add(p);
+            } else if (p.getName().contains(key)) {
+                result.add(p);
+            } else if (p.getName().contains(key)) {
+                result.add(p);
+            } else if (p.getName().contains(key)) {
+                result.add(p);
             }
         }
         return result;
