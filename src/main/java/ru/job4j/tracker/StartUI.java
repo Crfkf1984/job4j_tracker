@@ -31,7 +31,6 @@ public class StartUI {
     }
 
     public static void replaceItem(Input input, Tracker tracker) {
-        System.out.println("Edit item ?");
         int id = input.askInt("Enter to id edit item");
         String name = input.askStr("Enter to name edit item");
         Item item = new Item(id, name);
