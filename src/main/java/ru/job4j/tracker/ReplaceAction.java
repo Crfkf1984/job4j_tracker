@@ -17,9 +17,9 @@ public class ReplaceAction implements UserAction{
         String name = input.askStr("Enter to name edit item");
         Item item = new Item(id, name);
         if (tracker.replace(id, item)) {
-            System.out.println(item);
+            out.println(item);
         } else {
-            System.out.println("Заявка с таким id не найдена");
+            out.println("Заявка с таким id не найдена");
         }
         return true;
     }
