@@ -3,6 +3,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class StartUI {
+    private final Output out;
+
+    public StartUI(Output out) {
+        this.out = out;
+    }
     public static void main(String[] args) {
         Item formatdate = new Item(1, "Petr");
         Item zajavka = new Item();
@@ -14,12 +19,13 @@ public class StartUI {
         String currentDateTimeFormat = poluchaemznachenie.format(formatter);
         System.out.println("Текущая дата : " + currentDateTimeFormat);
 
+        Output output = new ConsoleOutput();
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new ShowallitemsAction(), new ReplaceAction(),
-                         new DeleteAction(), new FindItemByIdAction(), new FindItemsByNameAction(),
-        new ExitProgramAction()};
-        new StartUI().init(input, tracker, actions);
+        UserAction[] actions = {new CreateAction(output), new ShowallitemsAction(output), new ReplaceAction(output),
+                         new DeleteAction(output), new FindItemByIdAction(output), new FindItemsByNameAction(output),
+        new ExitProgramAction(output)};
+        new StartUI(output).init(input, tracker, actions);
 
     }
 
