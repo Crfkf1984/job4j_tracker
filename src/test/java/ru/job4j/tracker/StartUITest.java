@@ -115,6 +115,7 @@ public class StartUITest {
 
     @Test
     public void whenFindItemByIdAction() {
+        String ln = System.lineSeparator();
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
@@ -122,14 +123,44 @@ public class StartUITest {
         Item replacedName = item;
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
-                new String[]{"0", "1", "1"}
+                new String[]{"0","1", "1"}
         );
         UserAction[] actions = {
                 new FindItemByIdAction(out),
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(replacedName));
+        assertThat(out.toString(), is("0. === Find item by Id? ===" + ln +
+                                            "1.  === Exit Program?=== " + ln +
+                                             item + ln +
+                                             "0. === Find item by Id? ===" + ln +
+                                             "1.  === Exit Program?=== " + ln));
+    }
+
+
+    @Test
+    public void whenShowallitemsAction() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        /* Добавим в tracker новую заявку */
+        Item item = tracker.add(new Item("item"));
+        /* Входные данные должны содержать ID добавленной заявки item.getId() */
+        Input in = new StubInput(
+                new String[]{"0", "1"}
+        );
+        UserAction[] actions = {
+                new ShowallitemsAction(out),
+                new ExitProgramAction(out)
+        };
+        String ln = System.lineSeparator();
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "0. === Find all Name? ===" + ln
+                        + "1.  === Exit Program?=== " + ln
+                        + item + ln
+                        + "0. === Find all Name? ===" + ln
+                        + "1.  === Exit Program?=== " + ln)
+        );
     }
 
     @Test
@@ -138,39 +169,23 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("item"));
-        String replacedName = "item";
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
-                new String[]{"0", "1", "1"}
+                new String[]{"0", "item", "1"}
         );
         UserAction[] actions = {
                 new FindItemsByNameAction(out),
                 new ExitProgramAction(out)
         };
+        String ln = System.lineSeparator();
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(replacedName));
+        assertThat(out.toString(), is(
+                "0. Find items by name ?" + ln
+                        + "1.  === Exit Program?=== " + ln
+                        + item + ln
+                        + "0. Find items by name ?" + ln
+                        + "1.  === Exit Program?=== " + ln)
+        );
     }
 
-    @Test
-    public void whenShowallitemsAction() {
-        String ln = System.lineSeparator();
-        Output out = new StubOutput();
-        Tracker tracker = new Tracker();
-        /* Добавим в tracker новую заявку */
-        Item item = tracker.add(new Item("item"));
-        String replacedName = "0. === Find all Name? ===" + ln
-                + "1.  === Exit Program?===" + ln +
-                "Item{id=1, name='item', created=2021-01-26T19:42:26.340698700}"
-                + ln + "0. === Find all Name? ===" + ln + "1.  === Exit Program?===" + ln;
-        /* Входные данные должны содержать ID добавленной заявки item.getId() */
-        Input in = new StubInput(
-                new String[]{"0","1","1"}
-        );
-        UserAction[] actions = {
-                new ShowallitemsAction(out),
-                new ExitProgramAction(out)
-        };
-        new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(replacedName));
-    }
 }
