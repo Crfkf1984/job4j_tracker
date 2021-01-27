@@ -129,7 +129,7 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(replacedName));
+        assertThat(out.toString(), is(replacedName));
     }
 
     @Test
@@ -148,25 +148,29 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+        assertThat(out.toString(), is(replacedName));
     }
 
     @Test
     public void whenShowallitemsAction() {
+        String ln = System.lineSeparator();
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("item"));
-        Item replacedName = item;
+        String replacedName = "0. === Find all Name? ===" + ln
+                + "1.  === Exit Program?===" + ln +
+                "Item{id=1, name='item', created=2021-01-26T19:42:26.340698700}"
+                + ln + "0. === Find all Name? ===" + ln + "1.  === Exit Program?===" + ln;
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
-                new String[]{"0", "1", "1"}
+                new String[]{"0","1","1"}
         );
         UserAction[] actions = {
                 new ShowallitemsAction(out),
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(replacedName));
+        assertThat(out.toString(), is(replacedName));
     }
 }
