@@ -9,14 +9,14 @@ public class UserStore {
                return user;
            }
        }
-       return null;
+       throw new UserNotFoundException("Пользователь к сожалению не найден!");
     }
 
     public static boolean validate(User user) throws UserInvalidException {
         if ((user.isValid()) && (user.getUsername().length() >= 3))  {
         return true;
     }
-     return false;
+     throw new UserInvalidException("Пользователь не валидный!");
     }
 
     public static void main(String[] args) {
@@ -33,10 +33,10 @@ public class UserStore {
             }
         } catch (UserInvalidException a) {
             a.printStackTrace();
-            System.out.println(" Пользователь не валидный!");
+            //System.out.println(" Пользователь не валидный!");
         } catch (UserNotFoundException d) {
             d.printStackTrace();
-            System.out.println("Пользователь к сожалению не найден!");
+            //System.out.println("Пользователь к сожалению не найден!");
         }
 
 
