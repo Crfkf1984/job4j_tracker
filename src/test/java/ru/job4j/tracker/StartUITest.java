@@ -123,7 +123,7 @@ public class StartUITest {
         Item replacedName = item;
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
-                new String[]{"0","1", "1"}
+                new String[]{"0", "1", "1"}
         );
         UserAction[] actions = {
                 new FindItemByIdAction(out),
@@ -131,10 +131,10 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("0. === Find item by Id? ===" + ln +
-                                            "1.  === Exit Program?=== " + ln +
-                                             item + ln +
-                                             "0. === Find item by Id? ===" + ln +
-                                             "1.  === Exit Program?=== " + ln));
+                "1.  === Exit Program?=== " + ln +
+                item + ln +
+                "0. === Find item by Id? ===" + ln +
+                "1.  === Exit Program?=== " + ln));
     }
 
 
@@ -188,4 +188,26 @@ public class StartUITest {
         );
     }
 
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"7", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "0.  === Exit Program?=== %n"
+                                + "Wrong input, you can select: 0 .. 0%n"
+                                + "Menu.%n"
+                                + "0.  === Exit Program?=== %n"
+                )
+        ));
+
+    }
 }
