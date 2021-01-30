@@ -5,6 +5,7 @@ public class Find {
         if (index < 0 && index > data.length) {
             throw new IllegalArgumentException("Index out of bound");
         }
+
         return data[index];
     }
 
@@ -12,5 +13,6 @@ public class Find {
         String[] data = {"one", "two", "three"};
         String rsl = Find.get(data, 0);
         System.out.println(rsl);
+
     }
 }
