@@ -3,20 +3,20 @@ import java.lang.String;
 
 public class UserStore {
     public static User findUser(User[] users, String login) throws UserNotFoundException {
-       if (users[0].getUsername().equals(login)) {
            for (User user :
                    users) {
-               return user;
+               if (users[0].getUsername().equals(login)) {
+                   return user;
+               }
            }
-       }
        throw new UserNotFoundException("Пользователь к сожалению не найден!");
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if ((user.isValid()) || (user.getUsername().length() >= 3))  {
-        return true;
+        if ((!user.isValid()) || (user.getUsername().length() <= 3))  {
+            throw new UserInvalidException("Пользователь не валидный!");
     }
-     throw new UserInvalidException("Пользователь не валидный!");
+        return true;
     }
 
     public static void main(String[] args) {
