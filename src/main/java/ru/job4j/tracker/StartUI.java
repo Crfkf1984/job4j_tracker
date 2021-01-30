@@ -20,7 +20,7 @@ public class StartUI {
         System.out.println("Текущая дата : " + currentDateTimeFormat);
 
         Output output = new ConsoleOutput();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = new Tracker();
         UserAction[] actions = {new CreateAction(output), new ShowallitemsAction(output), new ReplaceAction(output),
                          new DeleteAction(output), new FindItemByIdAction(output), new FindItemsByNameAction(output),
