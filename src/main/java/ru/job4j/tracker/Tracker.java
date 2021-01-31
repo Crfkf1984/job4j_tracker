@@ -2,7 +2,19 @@ package ru.job4j.tracker;
 
 import java.util.Arrays;
 
-public class Tracker {
+public final class Tracker {
+    private static Tracker instance = null;
+
+    private Tracker() {
+
+    }
+
+    public Tracker getInstance() {
+        if (instance == null) {
+            instance = new Tracker();
+        }
+        return instance;
+    }
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
