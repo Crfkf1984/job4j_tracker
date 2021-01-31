@@ -9,7 +9,7 @@ public final class Tracker {
 
     }
 
-    public Tracker getInstance() {
+    public static Tracker getInstance() {
         if (instance == null) {
             instance = new Tracker();
         }
