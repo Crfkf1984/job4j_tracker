@@ -1,8 +1,12 @@
 package ru.job4j.tracker;
 import org.junit.Test;
 
+import java.lang.String;
+
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 import static org.hamcrest.core.Is.is;
 
@@ -13,9 +17,9 @@ public class StartUITest {
         Input input = new StubInput(answers);
         Tracker tracker = Tracker.getInstance();
         StartUI.createItem(input, tracker);
-        Item created = tracker.findAll()[0];
+        ArrayList<Item> created = tracker.findAll();
         Item expected = new Item("Fix PC");
-        assertThat(created.getName(), is(expected.getName()));
+        assertThat(created, is(expected.getName()));
     }
 
     @Test
@@ -57,7 +61,7 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
     }
 
     @Test
@@ -65,7 +69,7 @@ public class StartUITest {
         Output out = new ConsoleOutput();
         Tracker tracker = Tracker.getInstance();
         /* Добавим в tracker новую заявку */
-        Item item = tracker.add(new Item("Replaced item"));
+        ArrayList<Item> item = tracker.add(new Item("Replaced item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         String replacedName = "New item name";
         Input in = new StubInput(
@@ -76,7 +80,7 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+        assertThat(tracker.findById(item, is(replacedName));
     }
 
     @Test
@@ -84,7 +88,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = Tracker.getInstance();
         /* Добавим в tracker новую заявку */
-        Item item = tracker.add(new Item("Deleted item"));
+        ArrayList<Item> item = tracker.add(new Item("Deleted item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[]{"0", "1", "1"}
@@ -119,8 +123,8 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = Tracker.getInstance();
         /* Добавим в tracker новую заявку */
-        Item item = tracker.add(new Item("item"));
-        Item replacedName = item;
+        ArrayList<Item> item = tracker.add(new Item("item"));
+        ArrayList<Item> replacedName = item;
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[]{"0", "1", "1"}
@@ -143,7 +147,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = Tracker.getInstance();
         /* Добавим в tracker новую заявку */
-        Item item = tracker.add(new Item("item"));
+        ArrayList<Item> item = tracker.add(new Item("item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[]{"0", "1"}
@@ -168,7 +172,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = Tracker.getInstance();
         /* Добавим в tracker новую заявку */
-        Item item = tracker.add(new Item("item"));
+        ArrayList<Item> item = tracker.add(new Item("item"));
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[]{"0", "item", "1"}
