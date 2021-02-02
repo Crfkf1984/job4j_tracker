@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StartUI {
     private final Output out;
@@ -11,7 +13,7 @@ public class StartUI {
     public static void main(String[] args) {
         Item formatdate = new Item(1, "Petr");
         Item zajavka = new Item();
-        Tracker find = new Tracker();
+        Tracker find = Tracker.getInstance();
         find.add(formatdate);
         System.out.println(find.findById(1));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
@@ -21,7 +23,7 @@ public class StartUI {
 
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {new CreateAction(output), new ShowallitemsAction(output), new ReplaceAction(output),
                          new DeleteAction(output), new FindItemByIdAction(output), new FindItemsByNameAction(output),
         new ExitProgramAction(output)};
@@ -58,7 +60,7 @@ public class StartUI {
 
     public static void findallNameItem(Input input, Tracker tracker) {
         System.out.println("=== Find all Name? ===");
-        Item[] items = tracker.findAll();
+        List<Item> items = tracker.findAll();
         for (Item i :
                 items) {
             System.out.println(i);
@@ -78,8 +80,8 @@ public class StartUI {
 
     public static void finditemsbynameItem(Input input, Tracker tracker) {
         String name = input.askStr("Find items by name ?");
-        Item[] items = tracker.findByName(name);
-        if (items.length != 0) {
+        List<Item> items = tracker.findByName(name);
+        if (items.size() != 0) {
             for (Item item :
                     items) {
                 System.out.println(item);

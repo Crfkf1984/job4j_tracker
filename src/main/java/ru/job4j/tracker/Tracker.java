@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public final class Tracker {
     private static Tracker instance = null;
@@ -16,11 +17,11 @@ public final class Tracker {
         }
         return instance;
     }
-    private final ArrayList<Item> items = new ArrayList<Item>(100);
+    private final List<Item> items = new ArrayList<Item>(100);
     private int ids = 1;
     private int size = 0;
 
-    public ArrayList<Item> add(Item item) {
+    public List<Item> add(Item item) {
         item.setId(ids++);
         items.add(item);
         return items;
@@ -31,12 +32,12 @@ public final class Tracker {
         return index != -1 ? items.get(index) : null;
     }
 
-    public ArrayList<Item> findAll() {
-        return Arrays.copyOf(items, size);
+    public List<Item> findAll() {
+        return items;
     }
 
-    public ArrayList<Item> findByName(String key) {
-        ArrayList<Item> resmassiv = new ArrayList<Item>(size);
+    public List<Item> findByName(String key) {
+        List<Item> resmassiv = new ArrayList<Item>(size);
         int zicle = 0;
         for (int index = 0; index < size; index++) {
             Item res = items.get(index);
@@ -45,14 +46,13 @@ public final class Tracker {
                zicle++;
             }
         }
-        resmassiv = Arrays.copyOf(resmassiv, zicle);
         return resmassiv;
     }
     public boolean replace(int id, Item item) {
      int index = indexOf(id);
      boolean rsl = index != -1;
      if (rsl) {
-         items.add(item);
+         items.set(index,item);
          item.setId(id);
          return rsl;
      }
@@ -79,7 +79,7 @@ public final class Tracker {
            int distPos = index;
            int length = size - index;
            System.arraycopy(items, start, items, distPos, length);
-           items[size - 1] = null;
+           items.remove(items);
            size--;
            return rsl;
        }
