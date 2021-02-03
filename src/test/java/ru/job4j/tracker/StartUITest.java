@@ -20,7 +20,7 @@ public class StartUITest {
         StartUI.createItem(input, tracker);
         List<Item> created = tracker.findAll();
         Item expected = new Item("Fix PC");
-        assertThat(created, is(expected.getName()));
+        assertThat(created.get(0).getName(), is(expected.getName()));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.get(1).getId()), is(replacedName));
+        assertThat(tracker.findById(1).getName(), is(replacedName));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.get(1).getId()), is(nullValue()));
+        assertThat(tracker.findById(1), is(nullValue()));
     }
 
     @Test
@@ -137,7 +137,7 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("0. === Find item by Id? ===" + ln +
                 "1.  === Exit Program?=== " + ln +
-                item + ln +
+                tracker.findAll().get(0) + ln +
                 "0. === Find item by Id? ===" + ln +
                 "1.  === Exit Program?=== " + ln));
     }
@@ -162,7 +162,7 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "0. === Find all Name? ===" + ln
                         + "1.  === Exit Program?=== " + ln
-                        + item + ln
+                        + tracker.findAll().get(0) + ln
                         + "0. === Find all Name? ===" + ln
                         + "1.  === Exit Program?=== " + ln)
         );
@@ -187,7 +187,7 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "0. Find items by name ?" + ln
                         + "1.  === Exit Program?=== " + ln
-                        + item + ln
+                        + tracker.findAll().get(0) + ln
                         + "0. Find items by name ?" + ln
                         + "1.  === Exit Program?=== " + ln)
         );
