@@ -11,9 +11,11 @@ public class UniqueText {
         for (String element : origin) {
             check.add(element);
         }
-        for (String res : text) {
-            return  (check.contains(res));
 
+        for (String res : text) {
+            if (!check.contains(res)) {
+                return false;
+            }
         }
         return rsl;
     }
