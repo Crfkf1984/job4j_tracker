@@ -20,7 +20,6 @@ public class PassportOffice {
 
 
     public Citizen get(String passport) {
-        Citizen res;
-       return res = citizens.get(passport);
+       return citizens.get(passport);
     }
 }
