@@ -11,15 +11,15 @@ public class PassportOffice {
         if (citizen != null) {
             if (!citizens.containsKey(citizen)) {
                 citizens.put(citizen.getPassport(), citizen);
+            } else {
+                return rsl = true;
             }
-        } else {
-            return rsl = true;
         }
         return rsl;
     }
 
 
-    public Citizen get(String passport) {
-       return citizens.get(passport);
-    }
+        public Citizen get (String passport){
+            return citizens.get(passport);
+        }
 }
