@@ -1,16 +1,11 @@
 package ru.job4j.tracker;
 
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
-public class One implements Comparator {
+public class One implements Comparator<Item> {
     @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
-    }
-    public static List<Integer> vozrastanie(List<Integer> one) {
-        Collections.sort(one);
-        return one;
+    public int compare(Item o1, Item o2) {
+
+        return o2.getName().compareTo(o1.getName());
     }
 }

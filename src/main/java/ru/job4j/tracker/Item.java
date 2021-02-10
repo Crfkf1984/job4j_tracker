@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Item {
+public class Item implements Comparable<Item>{
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
@@ -60,4 +60,8 @@ public class Item {
                 '}';
     }
 
+    @Override
+    public int compareTo(Item o) {
+        return 0;
+    }
 }

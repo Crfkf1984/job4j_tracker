@@ -7,10 +7,6 @@ import java.util.List;
 public final class Tracker {
     private static Tracker instance = null;
 
-    private Tracker() {
-
-    }
-
     public static Tracker getInstance() {
         if (instance == null) {
             instance = new Tracker();

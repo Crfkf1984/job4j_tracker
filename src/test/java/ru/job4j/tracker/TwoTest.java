@@ -11,9 +11,10 @@ import static org.junit.Assert.*;
 
 public class TwoTest {
     @Test
-    public void sortubivanie() {
-        List <Integer> list =  Arrays.asList ( 1 , 3 , 2 , 4 , 5 );
-        List<Integer> expected= Arrays.asList ( 5 , 4 , 3 , 2 , 1 );
-        assertThat(Two.ubivanie(list),is(expected));
+    public void sortvozrastanie() {
+        int list = new Item(2, "Petr").compareTo(
+        new Item(1, "Ivan"));
+        int expected= 0;
+        assertThat(list,is(expected));
     }
 }

@@ -4,14 +4,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Two implements Comparator {
+public class Two implements Comparator<Item> {
     @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
-    }
-
-    public static List<Integer> ubivanie(List<Integer> two) {
-        Collections.sort(two, Collections.reverseOrder());
-        return two;
+    public int compare(Item o1, Item o2) {
+        return Integer.compare(o1.getId(),o2.getId());
     }
 }

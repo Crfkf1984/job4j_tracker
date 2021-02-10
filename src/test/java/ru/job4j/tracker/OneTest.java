@@ -10,10 +10,13 @@ import static org.junit.Assert.*;
 
 public class OneTest {
     @Test
-    public void sortvozrastanie() {
-    List <Integer> list =  Arrays.asList ( 5 , 4 , 3 , 1 , 2 );
-    List<Integer> expected= Arrays.asList ( 1 , 2 , 3 , 4 , 5 );
-    assertThat(One.vozrastanie(list),is(expected));
+    public void sortubivanie() {
+    List<Integer> list = Arrays.asList(
+                new Item("Petr").compareTo(
+                new Item("Ivan"))
+    );
+    List<Integer> expected= Arrays.asList(0);
+    assertThat(list,is(expected));
 }
 
 }
