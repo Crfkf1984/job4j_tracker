@@ -12,12 +12,12 @@ import static org.junit.Assert.*;
 public class OneTest {
     @Test
     public void sortubivanie() {
+        Item petr =  new Item("Petr");
+        Item ivan = new Item("Ivan");
     List<Item> list = Arrays.asList(
-                    new Item("Petr"),
-                            new Item("Ivan"));
+            petr,ivan);
         Collections.sort(list, new One());
-    List<Item> expected= Arrays.asList(new Item("Petr"),
-            new Item("Ivan"));
+    List<Item> expected= Arrays.asList(petr, ivan);
     assertThat(list,is(expected));
 }
 

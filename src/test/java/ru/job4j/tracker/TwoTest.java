@@ -12,9 +12,10 @@ import static org.junit.Assert.*;
 public class TwoTest {
     @Test
     public void sortvozrastanie() {
-        int list = new Item(2, "Petr").compareTo(
+        List<Item> list = Arrays.asList(new Item(2, "Petr"),
             new Item(1, "Ivan"));
-        int expected= 0;
-        assertThat(list,is(expected));
+        Collections.sort(list, new Two());
+        int expected= 1;
+        assertThat(list.get(0).getId(),is(expected));
     }
 }
