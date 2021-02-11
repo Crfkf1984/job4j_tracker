@@ -13,7 +13,7 @@ public class TwoTest {
     @Test
     public void sortvozrastanie() {
         int list = new Item(2, "Petr").compareTo(
-        new Item(1, "Ivan"));
+            new Item(1, "Ivan"));
         int expected= 0;
         assertThat(list,is(expected));
     }

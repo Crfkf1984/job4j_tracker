@@ -1,9 +1,7 @@
 package ru.job4j.tracker;
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.*;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 public class Item implements Comparable<Item>{
     private int id;
