@@ -35,22 +35,20 @@ public class JobTest {
     public void jobDescByPriorityvozrastanie() {
         Job pecar = new Job("Pecar", 1);
         Job sluga = new Job("Sluga", 2);
-        List<Job> job = Arrays.asList(new Job("Pecar", 1),
-                new Job("Sluga", 2));
+        List<Job> job = Arrays.asList(pecar, sluga);
         Collections.sort(job, new JobDescByPriority());
-        int expected = 1;
-        assertThat(job.get(0).getPriority(), is(expected));
+        List<Job> expected = Arrays.asList(pecar, sluga);
+        assertThat(job, is(expected));
     }
 
     @Test
     public void jobDescByPriorityubivanie() {
         Job pecar = new Job("Pecar", 1);
         Job sluga = new Job("Sluga", 2);
-        List<Job> job = Arrays.asList(new Job("Pecar", 1),
-                new Job("Sluga", 2));
+        List<Job> job = Arrays.asList(pecar, sluga);
         Collections.sort(job, new JobDescByPriorityubivanie());
-        int expected = 2;
-        assertThat(job.get(0).getPriority(), is(expected));
+        List<Job> expected = Arrays.asList(sluga, pecar);
+        assertThat(job, is(expected));
     }
 
 }
