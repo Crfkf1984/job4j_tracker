@@ -7,10 +7,8 @@ public class Programmer extends Engineer {
     private String mischka;
     private int timejob;
 
-    public Programmer( String komp,String systemblock, String tehzadanie, String mischka) {
-        super( komp, systemblock, tehzadanie, mischka);
+    public Programmer(String komp, String systemblock, String tehzadanie, String mischka) {
+        super(komp, systemblock, tehzadanie, mischka);
     }
-
-// public Doctor grafickzadach() {};
 }
 

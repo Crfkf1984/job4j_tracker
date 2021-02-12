@@ -19,7 +19,6 @@ public class Profession {
         this.education = education;
     }
 
-
     public String getName() {
         return name;
     }

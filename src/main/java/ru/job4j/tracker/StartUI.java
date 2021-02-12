@@ -1,8 +1,6 @@
 package ru.job4j.tracker;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class StartUI {
     private final Output out;
@@ -10,9 +8,10 @@ public class StartUI {
     public StartUI(Output out) {
         this.out = out;
     }
+
     public static void main(String[] args) {
         Item formatdate = new Item(1, "Petr");
-        Item zajavka = new Item();
+        //Item zajavka = new Item();
         Tracker find = Tracker.getInstance();
         find.add(formatdate);
         System.out.println(find.findById(1));
@@ -24,9 +23,11 @@ public class StartUI {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = Tracker.getInstance();
-        UserAction[] actions = {new CreateAction(output), new ShowallitemsAction(output), new ReplaceAction(output),
-                         new DeleteAction(output), new FindItemByIdAction(output), new FindItemsByNameAction(output),
-        new ExitProgramAction(output)};
+        UserAction[] actions = {new CreateAction(output), new ShowallitemsAction(output),
+                new ReplaceAction(output), new DeleteAction(output),
+                new FindItemByIdAction(output), new FindItemsByNameAction(output),
+                new ExitProgramAction(output)};
+
         new StartUI(output).init(input, tracker, actions);
 
     }
@@ -48,6 +49,7 @@ public class StartUI {
             System.out.println("Заявка с таким id не найдена");
         }
     }
+
     public static void deteleItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item: ? ===");
         int id = input.askInt("=== Enter to item ===");
@@ -57,41 +59,6 @@ public class StartUI {
             System.out.println("Такой заявки нет!");
         }
     }
-
-    public static void findallNameItem(Input input, Tracker tracker) {
-        System.out.println("=== Find all Name? ===");
-        List<Item> items = tracker.findAll();
-        for (Item i :
-                items) {
-            System.out.println(i);
-        }
-    }
-
-    public static void finditembyIdItem(Input input, Tracker tracker) {
-        System.out.println("=== Find item by Id? ===");
-        int id = input.askInt("Enter id");
-        Item item = tracker.findById(id);
-        if (item != null) {
-            System.out.println(item);
-        }else {
-            System.out.println("Заявка с таким id не найдена");
-        }
-    }
-
-    public static void finditemsbynameItem(Input input, Tracker tracker) {
-        String name = input.askStr("Find items by name ?");
-        List<Item> items = tracker.findByName(name);
-        if (items.size() != 0) {
-            for (Item item :
-                    items) {
-                System.out.println(item);
-            }
-
-        } else {
-            System.out.println("Заявки с таким именем не найдены");
-        }
-    }
-
 
     public void init(Input input, Tracker tracker, UserAction[] actions) {
             boolean run = true;
@@ -111,15 +78,6 @@ public class StartUI {
             for (int index = 0; index < actions.length; index++) {
                 out.println(index + ". " + actions[index].name());
             }
-//            System.out.println("Menu."+ System.lineSeparator()
-//            + "0. Add new Item" + System.lineSeparator() +
-//            "1. Show all items" + System.lineSeparator() +
-//            "2. Edit item" + System.lineSeparator() +
-//            "3. Delete item" + System.lineSeparator() +
-//            "4. Find item by Id" + System.lineSeparator() +
-//            "5. Find items by name" + System.lineSeparator()
-//            + "6. Exit Program" + System.lineSeparator());
-            //"Select:" + System.lineSeparator());
-            /* добавить остальные пункты меню. */
+
         }
 }

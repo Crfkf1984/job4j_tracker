@@ -10,6 +10,8 @@ public class Police {
         license.setModel("Toyota");
         license.setOwner("Petr Arsentev");
 
-        System.out.println(license.getOwner() + " has a car - " + license.getModel() + " : " + license.getCode());
+        System.out.println(license.getOwner()
+                + " has a car - " + license.getModel() + " : "
+                + license.getCode());
     }
 }

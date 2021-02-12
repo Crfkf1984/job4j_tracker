@@ -6,7 +6,7 @@ public class Matches {
         boolean when = true;
         String name1 = "Андрей";
         String name2 = "Сергей";
-       int rsl = 11;
+        int rsl = 11;
         while (rsl > 0) {
             if (when) {
                 System.out.println("Берите спички, " + name1);
@@ -22,10 +22,15 @@ public class Matches {
                 System.out.println("Осталось " + rsl);
             } else {
                 System.out.println("Вы нарушаете правила, попробуйте еще !!!");
-                when = when == true ? false : true;
+                 when = true ? false : true;
+//                if (when == true) {
+//                    when = false;
+//                } else if (when == false) {
+//                    when = true;
+//                }
             }
         }
-        String res = when == true  ? name2 : name1;
+        String res = true ? name2 : name1;
         System.out.println("Победа присуждается : " + res);
     }
 }

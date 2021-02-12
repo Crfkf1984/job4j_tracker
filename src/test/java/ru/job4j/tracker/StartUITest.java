@@ -1,4 +1,5 @@
 package ru.job4j.tracker;
+
 import org.junit.Test;
 
 import java.lang.String;
@@ -9,6 +10,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 import static org.hamcrest.core.Is.is;
 
 public class StartUITest {
@@ -135,13 +137,12 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("0. === Find item by Id? ===" + ln +
-                "1.  === Exit Program?=== " + ln +
-                tracker.findAll().get(0) + ln +
-                "0. === Find item by Id? ===" + ln +
-                "1.  === Exit Program?=== " + ln));
+        assertThat(out.toString(), is("0. === Find item by Id? ===" + ln
+                + "1.  === Exit Program?=== " + ln
+                + tracker.findAll().get(0) + ln
+                + "0. === Find item by Id? ===" + ln
+                + "1.  === Exit Program?=== " + ln));
     }
-
 
     @Test
     public void whenShowallitemsAction() {
@@ -206,7 +207,7 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 String.format(
-                                "0.  === Exit Program?=== %n"
+                        "0.  === Exit Program?=== %n"
                                 + "Wrong input, you can select: 0 .. 0%n"
                                 + "0.  === Exit Program?=== %n"
                 )

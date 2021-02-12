@@ -3,11 +3,11 @@ import java.lang.String;
 
 public class UserStore {
     public static User findUser(User[] users, String login) throws UserNotFoundException {
-           for (User user :
-                   users) {
-               if (user.getUsername().equals(login)) {
-                   return user;
-               }
+        for (User user
+                : users) {
+            if (user.getUsername().equals(login)) {
+                return user;
+            }
            }
        throw new UserNotFoundException("Пользователь к сожалению не найден!");
     }
@@ -33,12 +33,9 @@ public class UserStore {
             }
         } catch (UserInvalidException a) {
             a.printStackTrace();
-            //System.out.println(" Пользователь не валидный!");
         } catch (UserNotFoundException d) {
             d.printStackTrace();
-            //System.out.println("Пользователь к сожалению не найден!");
         }
-
 
     }
 }
