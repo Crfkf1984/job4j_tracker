@@ -8,16 +8,18 @@ import java.util.List;
 public class StringCompare implements Comparator<String> {
     @Override
     public int compare(String o1, String o2) {
-        String[] left = o1.split("");
-        String[] right = o2.split("");
-        for (int i = 0; i < left.length; i++) {
-            for (int j = 0; j < right.length; j++) {
-                char left1 = o1.charAt(i);
-                char right1 = o1.charAt(j);
-                int rsl = Character.compare( left1, right1);
-            }
-        }
-
+        int rsl = 0;
+          for (int i = 0; i < o1.length(); i++) {
+              int left = o1.charAt(i);
+              int right = o2.charAt(i);
+              rsl = Integer.compare(left, right);
+              if (rsl > 0) {
+                  return rsl;
+              } else if (rsl < 0) {
+                  return rsl;
+              }
+          }
         return rsl;
+
     }
 }
