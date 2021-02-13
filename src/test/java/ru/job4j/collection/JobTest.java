@@ -51,4 +51,24 @@ public class JobTest {
         assertThat(job, is(expected));
     }
 
+    @Test
+    public void jobDescByPriorityvozrastaniewhen2komp() {
+        Job pecar = new Job("Pecar", 1);
+        Job sluga = new Job("Sluga", 2);
+        List<Job> job = Arrays.asList(pecar, sluga);
+        Collections.sort(job, new JobDescByPriority().thenComparing(new JobDescByName())) ;
+        List<Job> expected = Arrays.asList(pecar, sluga);
+        assertThat(job, is(expected));
+    }
+
+    @Test
+    public void jobDescByPriorityubivaniewhen2komp() {
+        Job pecar = new Job("Pecar", 1);
+        Job sluga = new Job("Sluga", 2);
+        List<Job> job = Arrays.asList(pecar, sluga);
+        Collections.sort(job, new JobDescByPriorityubivanie().thenComparing(new JobDescByNameubiv()));
+        List<Job> expected = Arrays.asList(sluga, pecar);
+        assertThat(job, is(expected));
+    }
+
 }
