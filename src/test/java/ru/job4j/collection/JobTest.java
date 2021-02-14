@@ -56,7 +56,7 @@ public class JobTest {
         Job pecar = new Job("Pecar", 1);
         Job sluga = new Job("Sluga", 1);
         List<Job> job = Arrays.asList(pecar, sluga);
-        Collections.sort(job, new JobDescByPriority().thenComparing(new JobDescByName())) ;
+        Collections.sort(job, new JobDescByPriority().thenComparing(new JobDescByName()));
         List<Job> expected = Arrays.asList(pecar, sluga);
         assertThat(job, is(expected));
     }
@@ -66,7 +66,8 @@ public class JobTest {
         Job pecar = new Job("Pecar", 1);
         Job sluga = new Job("Sluga", 1);
         List<Job> job = Arrays.asList(pecar, sluga);
-        Collections.sort(job, new JobDescByPriorityubivanie().thenComparing(new JobDescByNameubiv()));
+        Collections.sort(job,
+                new JobDescByPriorityubivanie().thenComparing(new JobDescByNameubiv()));
         List<Job> expected = Arrays.asList(sluga, pecar);
         assertThat(job, is(expected));
     }

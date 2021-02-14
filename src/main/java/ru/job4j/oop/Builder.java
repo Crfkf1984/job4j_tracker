@@ -7,7 +7,7 @@ public class Builder extends Engineer {
     private String molotok;
     private String gvozdi;
 
-    public Builder(String instrument,String material, String molotok, String gvozdi) {
+    public Builder(String instrument, String material, String molotok, String gvozdi) {
         super(instrument, material, molotok, gvozdi);
     }
 
