@@ -18,7 +18,6 @@ public class BankService {
      */
     private Map<User, List<Account>> users = new HashMap<>();
 
-
     /**
      * Метод добавляет нового пользователя, также делает проверку,
      * если такой пользователь есть, то не добавляет его

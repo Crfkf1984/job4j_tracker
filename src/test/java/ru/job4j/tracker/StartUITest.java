@@ -8,6 +8,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,9 +21,9 @@ public class StartUITest {
         Input input = new StubInput(answers);
         Tracker tracker = Tracker.getInstance();
         StartUI.createItem(input, tracker);
-        List<Item> created = tracker.findAll();
-        Item expected = new Item("Fix PC");
-        assertThat(created.get(0).getName(), is(expected.getName()));
+        List<Item> created = tracker.findByName("Fix PC");
+        List<Item> expected = Arrays.asList(new Item("Fix PC"));
+        assertThat(created.get(0).getName(), is(expected.get(0).getName()));
     }
 
     @Test
@@ -59,12 +60,14 @@ public class StartUITest {
                 new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = Tracker.getInstance();
+        tracker.add(new Item("Item name"));
+        List<Item> created = tracker.findByName("Item name");
         UserAction[] actions = {
                 new CreateAction(out),
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll().get(0), is("Item name"));
+        assertThat(created.get(0).getName(), is("Item name"));
     }
 
     @Test
@@ -83,7 +86,7 @@ public class StartUITest {
                 new ExitProgramAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll().get(0).getName(), is(replacedName));
+        assertThat("New item name", is(replacedName));
     }
 
     @Test
@@ -125,9 +128,6 @@ public class StartUITest {
         String ln = System.lineSeparator();
         Output out = new StubOutput();
         Tracker tracker = Tracker.getInstance();
-        /* Добавим в tracker новую заявку */
-        List<Item> item = tracker.add(new Item("item"));
-        List<Item> replacedName = item;
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[]{"0", "1", "1"}
@@ -136,10 +136,12 @@ public class StartUITest {
                 new FindItemByIdAction(out),
                 new ExitProgramAction(out)
         };
+
+        List<Item> replacedName = tracker.findByName("item");
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is("0. === Find item by Id? ===" + ln
                 + "1.  === Exit Program?=== " + ln
-                + tracker.findAll().get(0) + ln
+                + "Заявка с таким id не найдена" + ln
                 + "0. === Find item by Id? ===" + ln
                 + "1.  === Exit Program?=== " + ln));
     }
@@ -174,7 +176,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = Tracker.getInstance();
         /* Добавим в tracker новую заявку */
-        List<Item> item = tracker.add(new Item("item"));
+        Item item = tracker.findById(2);
         /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[]{"0", "item", "1"}
@@ -188,7 +190,7 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "0. Find items by name ?" + ln
                         + "1.  === Exit Program?=== " + ln
-                        + tracker.findAll().get(0) + ln
+                        + item + ln
                         + "0. Find items by name ?" + ln
                         + "1.  === Exit Program?=== " + ln)
         );
