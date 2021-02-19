@@ -28,12 +28,14 @@ public class SearchAtt {
 
     public static List<Attachment> filters(Attachment value) {
         List<Attachment> rsl = new ArrayList<>();
-        if (Attachment value.getSize() != 0) {
+        if (value.getSize() != 0) {
             Predicate<Attachment> predicate = value -> value.getSize() > 100;
-            return rsl.add(value);
-        }else if (Attachment value != null) {
+            rsl.add(value);
+            return rsl;
+        }else if (value != null) {
             Predicate<Attachment> predicate1 = value -> value.getName().contains("bug");
-            return predicate1;
+            rsl.add(value);
+            return rsl;
         }
     }
 }
