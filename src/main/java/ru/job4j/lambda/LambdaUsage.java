@@ -15,5 +15,15 @@ public class LambdaUsage {
             System.out.println("compare - " + left.getName() + " : " + right.getName());
             return right.getName().compareTo(left.getName());
         };
+
+        String[] names = {
+                "Ivan", "Petr"
+        };
+        Comparator<String> lengthCmp = (left, right) -> {
+            System.out.println("execute comparator");
+            return left.length() - right.length();
+        };
+        Arrays.sort(names,lengthCmp);
     }
+
 }
