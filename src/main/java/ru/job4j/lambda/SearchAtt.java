@@ -26,16 +26,19 @@ public class SearchAtt {
         return rsl;
     }
 
-    public static List<Attachment> filters(Attachment value) {
+    public static List<Attachment> filters(List<Attachment> list, Predicate<Attachment> pred) {
         List<Attachment> rsl = new ArrayList<>();
-        if (value.getSize() != 0) {
-            Predicate<Attachment> predicate = value -> value.getSize() > 100;
-            rsl.add(value);
-            return rsl;
-        }else if (value != null) {
-            Predicate<Attachment> predicate1 = value -> value.getName().contains("bug");
-            rsl.add(value);
-            return rsl;
+        for (Attachment att : list) {
+            if (att.getSize() != 0) {
+                Predicate<Attachment> predicate = value -> att.getSize() > 100;
+                rsl.add(att);
+                return rsl;
+            } else if (att != null) {
+                Predicate<Attachment> predicate1 = value -> att.getName().contains("bug");
+                rsl.add(att);
+                return rsl;
+            }
         }
+        return rsl;
     }
 }
