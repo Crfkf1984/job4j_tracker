@@ -18,12 +18,12 @@ public class SearchAtt {
     }
 
     public static List<Attachment> filterName(List<Attachment> list) {
-        List<Attachment> rsl = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getName().contains("bug")) {
-                rsl.add(att);
-            }
-        }
+        List<Attachment> rsl = SearchAtt.filters(list);
+//        for (Attachment att : list) {
+//            if (att.getName().contains("bug")) {
+//                rsl.add(att);
+//            }
+//        }
         return rsl;
     }
 
