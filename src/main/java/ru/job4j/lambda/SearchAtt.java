@@ -6,17 +6,18 @@ import java.util.function.Predicate;
 import java.util.function.Predicate;
 
 public class SearchAtt {
-    public static List<Attachment> filterSize(List<Attachment> list, Predicate<Attachment> pred) {
-        List<Attachment> rsl = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getSize() > 100) {
-                rsl.add(att);
-            }
-        }
-        return rsl;
+    public static List<Attachment> filterSize(List<Attachment> list) {
+        List<Attachment> rsl = SearchAtt.filters(list);
+//        List<Attachment> rsl = new ArrayList<>();
+//        for (Attachment att : list) {
+//            if (att.getSize() > 100) {
+//                rsl.add(att);
+//            }
+//        }
+       return rsl;
     }
 
-    public static List<Attachment> filterName(List<Attachment> list, Predicate<Attachment> pred) {
+    public static List<Attachment> filterName(List<Attachment> list) {
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment att : list) {
             if (att.getName().contains("bug")) {
@@ -26,7 +27,7 @@ public class SearchAtt {
         return rsl;
     }
 
-    public static List<Attachment> filters(List<Attachment> list, Predicate<Attachment> pred) {
+    public static List<Attachment> filters(List<Attachment> list) {
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment att : list) {
             if (att.getSize() != 0) {
