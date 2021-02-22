@@ -21,7 +21,6 @@ public class SearchAtt {
         for (Attachment att : list) {
             if (predicate.test(att)) {
                 rsl.add(att);
-                return rsl;
             }
         }
         return rsl;
